@@ -1,16 +1,10 @@
-<?php 
-session_start();
-include 'php/connect.php';
-
-$isLoggedIn = isset($_SESSION['fullname']);
-    
-    ?>
-
 <?php
+session_start();
     include 'php/connect.php';
-    //ini_set('display_errors', 1);
-    //ini_set('display_startup_errors', 1);
-   // error_reporting(E_ALL);
+    $isLoggedIn = isset($_SESSION['fullname']);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+   error_reporting(E_ALL);
 // Database configuration
 define('DB_SERVER', 'db');
 define('DB_USERNAME', 'root');

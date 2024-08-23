@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 // Enable error reporting
 ini_set('display_errors', 1);
@@ -43,7 +44,7 @@ if (isset($_GET['xml'])) {
     header("Location: ?xml=" . urlencode('<test>User</test>'));
     die();
 }
-
+ob_end_flush(); 
 //require "header.php";
 ?>
 <!DOCTYPE html>

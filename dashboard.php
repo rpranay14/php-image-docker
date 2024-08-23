@@ -1,5 +1,7 @@
 <?php
 session_start();
+$csp = "default-src 'self';";
+header("Content-Security-Policy: $csp");
 include 'php/connect.php';
 
 
@@ -22,10 +24,10 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
 
 // Define the Content Security Policy
 // Define the Content Security Policy
-$csp = "default-src 'self';";
+
 
 // Set the CSP header
-header("Content-Security-Policy: $csp");
+
 
 
 

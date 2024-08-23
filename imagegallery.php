@@ -1,7 +1,9 @@
 <?php
  session_start();
   require_once './php/connect.php';
- 
+  ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+   error_reporting(E_ALL);
   $isLoggedIn = isset($_SESSION['fullname']);
 $uploadDir = '/var/www/html/uploads/'; // Directory where images are stored
 $webUploadDir = '/uploads/'; // Relative path to the upload directory from the web server root
@@ -143,6 +145,7 @@ if (is_dir($uploadDir)) {
         foreach ($images as $image) {
             // Check if the file is an image
             $filePath = $uploadDir . $image;
+            
             if (exif_imagetype($filePath)) {
                 echo '<div class="col-md-3 mb-3 ml-5">';
                 echo '<div class="card">';

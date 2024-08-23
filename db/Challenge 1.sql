@@ -49,7 +49,7 @@ INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 CREATE TABLE `contact` (
   `name` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL,
-  `mobile` int(11) NOT NULL,
+  `mobile` varchar(256) NOT NULL,
   `subject` varchar(256) NOT NULL,
   `message` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
