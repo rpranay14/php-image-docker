@@ -1,7 +1,10 @@
 <?php
+ob_start();
 session_start();
 include 'php/connect.php'; // Assuming this file includes database connection
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $error_message = ''; // Variable to store error messages
 
 if (isset($_POST['submit'])) {
@@ -52,6 +55,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+ob_end_flush(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -15,6 +15,8 @@ COPY . /var/www/html
 
 COPY flag.txt /var/flag.txt
 COPY flag.txt /var/www/flag.txt
+# Copy the custom Apache configuration file
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN mkdir -p /var/www/html/uploads && chmod -R 777 /var/www/html/uploads
 
