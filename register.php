@@ -324,7 +324,7 @@ body {
                 <button type="submit" name="done">Submit</button>
             </div>
 
-            <p style="text-align: center;">Already have an account? <a href="login.php" style="color: #000;">Login here</a></p>
+            <p style="text-align: center;">Already have an account? <a href="Login.php" style="color: #000;">Login here</a></p>
         </form>
     </section>
 
