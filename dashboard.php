@@ -17,7 +17,7 @@ if ($_user==true) {
 
 }
 else{
-	header("location:login.php");
+	header("location:Login.php");
 }
 
 $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';

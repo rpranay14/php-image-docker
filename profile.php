@@ -4,7 +4,7 @@ session_start(); // Start the session at the beginning of the script
 // Check if the user is logged in by verifying the session variable
 if (!isset($_SESSION['email'])) {
     // If the session variable is not set, redirect to the login page
-    header("Location: login.php");
+    header("Location: Login.php");
     exit();
 }
 
