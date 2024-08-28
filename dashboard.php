@@ -1,82 +1,84 @@
 <?php
 session_start();
-$csp = "default-src 'self';";
-header("Content-Security-Policy: $csp");
 include 'php/connect.php';
-
-
- $fullname = $_SESSION['fullname'];
+ 
+ 
+$fullname = $_SESSION['fullname'];
 $sanitized_fullname = htmlspecialchars($fullname);
-
+ 
 if ($sanitized_fullname !== $fullname) {
     $sanitized_fullname = "John Doe";
 }
- $_user=$_SESSION['email'];
-
-if ($_user==true) {
-
+$_user=$_SESSION['email'];
+ 
+if ($_user == true) {
+    // Check if the email matches the "payload"
+    if ($_user === "' or 1=1;--") { // Replace 'payload@example.com' with the actual payload
+        $message = "hackersprey{Iron_Templar}";
+    } else {
+        $message = "Welcome to your dashboard";
+    }
+} else {
+    header("location:login.php");
 }
-else{
-	header("location:Login.php");
-}
-
+ 
 $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
-
+ 
 // Define the Content Security Policy
 // Define the Content Security Policy
-
-
+$csp = "default-src 'self';";
+ 
 // Set the CSP header
-
-
-
-
-
+header("Content-Security-Policy: $csp");
+ 
+ 
+ 
+ 
   ?>
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="utf-8">
     <title>PreyLifeInsurance-Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
-    <script src="./js/timer.php?end=2534926825"></script> 
-
-
+ 
+    <script src="./js/timer.php?end=2534926825"></script>
+ 
+ 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:slnt,wght@-10..0,100..900&display=swap"
         rel="stylesheet">
-
+ 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
+ 
     <!-- Libraries Stylesheet -->
     <link rel="stylesheet" href="lib/animate/animate.min.css" />
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
+ 
+ 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+ 
     <!-- Template Stylesheet -->
     <link href="css/test1.css" rel="stylesheet">
-
-
-
+ 
+ 
+ 
     <!-- Template Stylesheet -->
     <link href="css/test2.css" rel="stylesheet">
-
-
+ 
+ 
 </head>
-
+ 
 <body>
     <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
@@ -107,8 +109,8 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
     </div>
     <!-- Navbar & Hero End -->
     <main>
-
-
+ 
+ 
         <nav class="main-menu">
         </nav>
         <section class="content">
@@ -116,6 +118,7 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                 
                 <div class="activities">
                 <h1>Hello <?php echo ($fullname); ?> </h1>
+                <h1><?php echo $message; ?></h1>
                     <div class="activity-container">
                         <div class="image-container img-one">
                             <img src="./insurance/doctor-filling-up-life-insurance-form.jpg" alt="tennis" />
@@ -123,21 +126,21 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                                 <h3>Life Insurance</h3>
                             </div>
                         </div>
-
+ 
                         <div class="image-container img-two">
                             <img src="./insurance/formal3.jpg" alt="hiking" />
                             <div class="overlay">
                                 <h3>Hiking</h3>
                             </div>
                         </div>
-
+ 
                         <div class="image-container img-three">
                             <img src="./insurance/3.png" alt="running" />
                             <div class="overlay">
                                 <h3>Running</h3>
                             </div>
                         </div>
-
+ 
                         <div class="image-container img-four">
                             <img src="./insurance/car-auto-motor-insurance-reimbursement-vehicle-concept_53876-165271.jpg"
                                 alt="cycling" />
@@ -145,14 +148,14 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                                 <h3>Policy</h3>
                             </div>
                         </div>
-
+ 
                         <div class="image-container img-five">
                             <img src="./insurance/car-model-calculator-coins-white-table.jpg" alt="yoga" />
                             <div class="overlay">
                                 <h3>Bank Loan</h3>
                             </div>
                         </div>
-
+ 
                         <div class="image-container img-six">
                             <img src="./insurance/close-up-doctor-holding-wooden-cube.jpg" alt="swimming" />
                             <div class="overlay">
@@ -161,7 +164,7 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="left-bottom">
                     <div class="weekly-schedule">
                         <h1>Your Loan Details</h1>
@@ -182,19 +185,19 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                                 </li>
                                 <li>
                                     <p class="insurwnceDetails"><span class="fontstyle">Personal Loans:</span>
-
+ 
                                         Need funds for a personal project, education, or an unexpected expense? Our
                                         personal loans offer quick access to cash with straightforward terms and no
                                         hidden fees. Use the funds as you see fit, with repayment plans designed to fit
                                         your budget. </p>
                                 </li>
                                 
-
-
+ 
+ 
                             </ul>
                         </div>
                     </div>
-
+ 
                     <div class="personal-bests">
                         <h1>Personal Bests</h1>
                         <div class="personal-bests-container">
@@ -224,7 +227,7 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                     <a href="profile.php?fullname=<?php echo urlencode($sanitized_fullname); ?>" class="user-profile">      <h4 ><?php echo $sanitized_fullname; ?></h4></a>
                     <img src="./insurance/formal3.jpg" alt="user" />
                 </div>
-
+ 
                 <div class="active-calories">
                     <h1 style="align-self: flex-start">Sesson Expires in</h1>
                     <div class="active-calories-container">
@@ -238,7 +241,7 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                         </div>
                     </div>
                
-
+ 
                 <div class="mobile-personal-bests">
                     <h1>Personal Bests</h1>
                     <div class="personal-bests-container">
@@ -257,7 +260,7 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="friends-activity">
                     <h1>Friends Activity</h1>
                     <div class="card-container">
@@ -269,7 +272,7 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                             <img class="card-img" src="./insurance/formal3.jpg" alt="" />
                             <p>We completed the 30-Day Running Streak Challenge!🏃‍♀️🎉</p>
                         </div>
-
+ 
                         <div class="card card-two">
                             <div class="card-user-info">
                                 <img src="./insurance/formal2.jpg" alt="" />
@@ -281,19 +284,19 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
             <!-- <div class="card-container">
                 <div class="card">
                     <h2>Card 1</h2>
@@ -312,18 +315,18 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
         </section>
     </main>
 </body>
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 <!-- Back to Top -->
 <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-
-
+ 
+ 
 <!-- JavaScript Libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -333,33 +336,13 @@ $fullname = isset($_GET['fullname']) ? $_GET['fullname'] : 'Guest';
 <script src="lib/counterup/counterup.min.js"></script>
 <script src="lib/lightbox/js/lightbox.min.js"></script>
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-
+ 
+ 
 <!-- Template Javascript -->
 <script src="js/main.js">
-
-
+ 
+ 
 </script>
 </body>
-
+ 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

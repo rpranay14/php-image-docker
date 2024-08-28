@@ -42,6 +42,11 @@ if (isset($_POST['submit'])) {
         $command_parts = explode(' ', $message);
         $command = $command_parts[0];
         $filename = isset($command_parts[1]) ? $command_parts[1] : '';
+        
+            echo $message==$allowed_commands[1];
+        
+      
+      
 
         if (in_array($command, $allowed_commands) && $command === 'cat' && !empty($filename)) {
             $safe_filename = escapeshellarg($filename); // Escape the filename for security

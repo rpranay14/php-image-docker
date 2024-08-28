@@ -3,6 +3,8 @@ FROM php:8.2-apache
 
 # Install necessary PHP extensions, including mysqli
 RUN docker-php-ext-install mysqli pdo pdo_mysql exif
+RUN apt-get update && apt-get install -y net-tools
+
 
 # Enable mod_rewrite for Apache (optional)
 RUN a2enmod rewrite

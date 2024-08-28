@@ -180,7 +180,7 @@ $isLoggedIn = isset($_SESSION['fullname']);
         <div class="item-1">
             <a href="#" class="card">
                 <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);">
+                    style="background-image: url(./img/gold.jpg);">
                 </div>
                 <article>
                     <h1>International Artist Feature: Malaysia</h1>
@@ -191,7 +191,7 @@ $isLoggedIn = isset($_SESSION['fullname']);
         <div class="item-2">
             <a href="#" class="card">
                 <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/users-2.png);">
+                    style="background-image: url(./img/personal.jpg);">
                 </div>
                 <article>
                     <h1>How to Conduct Remote Usability Testing</h1>
@@ -202,7 +202,7 @@ $isLoggedIn = isset($_SESSION['fullname']);
         <div class="item-3">
             <a href="#" class="card">
                 <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-5.jpg);">
+                    style="background-image: url(./img/car.jpg);">
                 </div>
                 <article>
                     <h1>Created by You, July Edition</h1>
@@ -212,10 +212,10 @@ $isLoggedIn = isset($_SESSION['fullname']);
                 </article>
             </a>
         </div>
-        <div class="item-4">
+        <div class="item-1">
             <a href="#" class="card">
                 <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/landing.png);">
+                    style="background-image: url(./img/home.jpg);">
                 </div>
                 <article>
                     <h1>How to Code a Scrolling “Alien Lander” Website</h1>
@@ -228,7 +228,7 @@ $isLoggedIn = isset($_SESSION['fullname']);
         <div class="item-5">
             <a href="#" class="card">
                 <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/strange.jpg);">
+                    style="background-image: url(./img/loan.jpg);">
                 </div>
                 <article>
                     <h1>How to Create a “Stranger Things” Text Effect in Adobe Photoshop</h1>
@@ -239,23 +239,14 @@ $isLoggedIn = isset($_SESSION['fullname']);
         <div class="item-6">
             <a href="#" class="card">
                 <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flor.jpg);"></div>
+                    style="background-image: url(./img/buisness.jpg);"></div>
                 <article>
                     <h1>5 Inspirational Business Portraits and How to Make Your Own</h1>
                     <span>Marie Gardiner</span>
                 </article>
             </a>
         </div>
-        <div class="item-7">
-            <a href="#" class="card">
-                <div class="thumb"
-                    style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/china.png);"></div>
-                <article>
-                    <h1>Notes From Behind the Firewall: The State of Web Design in China</h1>
-                    <span>Kendra Schaefer</span>
-                </article>
-            </a>
-        </div>
+     
     </div>
    
      <!-- Footer Start -->
